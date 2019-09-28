@@ -4,16 +4,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-@Table(name = "productos")
 @Entity
+@Table(name = "productos")
 public class Productos {
 	@Id
-	@Column (name="id_productos")
+	@Column (name="id_producto")
 	private int idproductos;
 	private String nombre;
 	private int precio;
 	@Column (name="id_categoria")
-	private int id_categoria;
+	private int idcategoria;
 	private String descripcion;
 	@Column (name="stock_minimo")
 	private int stockminimo;
@@ -28,7 +28,7 @@ public class Productos {
 		this.idproductos = id_productos;
 		this.nombre = nombre;
 		this.precio = precio;
-		this.id_categoria = id_categoria;
+		this.idcategoria = id_categoria;
 		this.descripcion = descripcion;
 		this.stockminimo = stock_minimo;
 		this.stockmaximo = stock_maximo;
@@ -71,12 +71,12 @@ public class Productos {
 
 
 	public int getId_categoria() {
-		return id_categoria;
+		return idcategoria;
 	}
 
 
 	public void setId_categoria(int id_categoria) {
-		this.id_categoria = id_categoria;
+		this.idcategoria = id_categoria;
 	}
 
 

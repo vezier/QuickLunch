@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -19,12 +20,12 @@ import ubb.ingsw92.quicklunchapp.service.ProductoService;
 
 
 @RestController
-@RequestMapping("api/productos")
+@RequestMapping("/api/productos")
 public class ProductoController {
 	@Autowired
 	private ProductoService productoService;
 	
-	@RequestMapping("")
+	@GetMapping("")
 	public ResponseEntity<List<Productos>> getAllProductos() {
 		List<Productos> prod = productoService.getAllProductos();
 		if(prod == null){
@@ -32,7 +33,7 @@ public class ProductoController {
 		}
 		return new ResponseEntity<List<Productos>>(prod, HttpStatus.OK);
 	}
-	@RequestMapping("/{id}")
+	@GetMapping("/categoria/{id}")
 	public ResponseEntity<List<Productos>> getAllProductosPorCat(@PathVariable int id) {
 		List<Productos> prod = productoService.getAllProductosPorCat(id);
 		if(prod == null){
@@ -41,13 +42,14 @@ public class ProductoController {
 		return new ResponseEntity<List<Productos>>(prod, HttpStatus.OK);
 	}
 
-	@RequestMapping("/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Productos> getProducto(@PathVariable int id) {
-		Optional<Productos> prod =productoService.getProducto(id);
+		Optional<Productos> prod1 = productoService.getProducto(id);
+		Productos prod = prod1.get();
 		if(prod == null){
 			return new ResponseEntity<Productos>(HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<Productos>(HttpStatus.OK);
+		return new ResponseEntity<Productos>(prod, HttpStatus.OK);			
 	}
 	@PostMapping(value="")
 	public void addProducto(@RequestBody Productos prod) {
@@ -65,4 +67,5 @@ public class ProductoController {
 	public void toggleProd(@PathVariable int id) {
 		productoService.toggleProducto(id);
 	}
+
 }
