@@ -1,4 +1,4 @@
-package ubb.ingsw92.quicklunchapp.servicio;
+package ubb.ingsw92.quicklunchapp.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ubb.ingsw92.quicklunchapp.modelo.Categoria;
-import ubb.ingsw92.quicklunchapp.repositorioJPA.CategoriaRepo;
+import ubb.ingsw92.quicklunchapp.model.Categoria;
+import ubb.ingsw92.quicklunchapp.repository.CategoriaRepo;
 
 @Service
 public class CategoriaService {

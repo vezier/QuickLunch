@@ -1,4 +1,4 @@
-package ubb.ingsw92.quicklunchapp.servicio;
+package ubb.ingsw92.quicklunchapp.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ubb.ingsw92.quicklunchapp.modelo.Productos;
-import ubb.ingsw92.quicklunchapp.repositorioJPA.ProductoRepo;
+import ubb.ingsw92.quicklunchapp.model.Productos;
+import ubb.ingsw92.quicklunchapp.repository.ProductoRepo;
 
 @Service
 public class ProductoService {
@@ -18,6 +18,12 @@ public class ProductoService {
 	public List<Productos> getAllProductos(){
 		List<Productos> productos = new ArrayList<> ();
 		productoRep.findAll()
+		.forEach(productos::add);
+		return productos;
+	}
+	public List<Productos> getAllProductosPorCat(int id){
+		List<Productos> productos = new ArrayList<> ();
+		productoRep.findByIdcat(id)
 		.forEach(productos::add);
 		return productos;
 	}

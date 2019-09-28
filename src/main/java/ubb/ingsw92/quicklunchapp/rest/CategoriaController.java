@@ -1,4 +1,4 @@
-package ubb.ingsw92.quicklunchapp.controlador;
+package ubb.ingsw92.quicklunchapp.rest;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,30 +12,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ubb.ingsw92.quicklunchapp.modelo.Categoria;
-import ubb.ingsw92.quicklunchapp.servicio.CategoriaService;
+import ubb.ingsw92.quicklunchapp.model.Categoria;
+import ubb.ingsw92.quicklunchapp.service.CategoriaService;
 @RestController
+@RequestMapping("api/categoria")
 public class CategoriaController {
 	@Autowired
 	private CategoriaService catService;
 	
-	@RequestMapping("/categoria")
+	@RequestMapping("")
 	public List<Categoria> getAllCategorias() {
 		return catService.getAllCategorias();
 	}
-	@RequestMapping("/categoria/{id}")
+	@RequestMapping("/{id}")
 	public Optional<Categoria> getCategoria(@PathVariable int id) {
 		return catService.getCategoria(id);
 	}
-	@PostMapping(value="/categoria")
+	@PostMapping(value="")
 	public void addProducto(@RequestBody Categoria cat) {
 		catService.addCategoria(cat);
 	}
-	@PutMapping(value="/categoria/{id}")
+	@PutMapping(value="/{id}")
 	public void updateProducto(@RequestBody Categoria cat,@PathVariable int id) {
 		catService.updateCategoria(id, cat);
 	}
-	@DeleteMapping(value="/categoria/{id}")
+	@DeleteMapping(value="/{id}")
 	public void deleteProducto(@PathVariable int id) {
 		catService.deleteCategoria(id);
 	}

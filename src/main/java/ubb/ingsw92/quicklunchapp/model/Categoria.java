@@ -1,36 +1,32 @@
-package ubb.ingsw92.quicklunchapp.modelo;
+package ubb.ingsw92.quicklunchapp.model;
 
-import java.util.List;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Table(name = "categoria")
 @Entity
 public class Categoria {
 	
 	@Id
-	private int id_categoria;
+	@Column (name="id_categoria")
+	private int idcategoria;
 	private String categoria;
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "id_categoria")
-	private List<Productos> productos;
 	public Categoria() {
 	}
 
 	public Categoria(int id_categoria, String categoria) {
 		super();
-		this.id_categoria = id_categoria;
+		this.idcategoria = id_categoria;
 		this.categoria = categoria;
 	}
 
 	public int getId_categoria() {
-		return id_categoria;
+		return idcategoria;
 	}
 
 	public void setId_categoria(int id_categoria) {
-		this.id_categoria = id_categoria;
+		this.idcategoria = id_categoria;
 	}
 
 	public String getCategoria() {
