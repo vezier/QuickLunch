@@ -23,7 +23,7 @@ public class ProductoService {
 	}
 	public List<Productos> getAllProductosPorCat(int id){
 		List<Productos> productos = new ArrayList<> ();
-		productoRep.findByIdcategoria(id)
+		productoRep.findByCategoriaIdcategoria(id)
 		.forEach(productos::add);
 		return productos;
 	}

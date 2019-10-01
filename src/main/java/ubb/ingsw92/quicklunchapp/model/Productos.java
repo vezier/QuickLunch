@@ -1,19 +1,24 @@
 package ubb.ingsw92.quicklunchapp.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name = "productos")
 public class Productos {
 	@Id
 	@Column (name="id_producto")
-	private int idproductos;
+	private int idProductos;
 	private String nombre;
 	private int precio;
-	@Column (name="id_categoria")
-	private int idcategoria;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn (name="id_categoria", referencedColumnName ="id_categoria")
+	private Categoria categoria;
 	private String descripcion;
 	@Column (name="stock_minimo")
 	private int stockminimo;
@@ -25,14 +30,24 @@ public class Productos {
 	public Productos(int id_productos, String nombre, int precio, int id_categoria, String descripcion,
 			int stock_minimo, int stock_maximo, boolean estado) {
 		super();
-		this.idproductos = id_productos;
+		this.idProductos = id_productos;
 		this.nombre = nombre;
 		this.precio = precio;
-		this.idcategoria = id_categoria;
+		this.categoria = new Categoria(id_categoria, "");
 		this.descripcion = descripcion;
 		this.stockminimo = stock_minimo;
 		this.stockmaximo = stock_maximo;
 		this.estado = estado;
+	}
+
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 
@@ -41,12 +56,12 @@ public class Productos {
 
 
 	public int getId_productos() {
-		return idproductos;
+		return idProductos;
 	}
 
 
 	public void setId_productos(int id_productos) {
-		this.idproductos = id_productos;
+		this.idProductos = id_productos;
 	}
 
 
@@ -67,16 +82,6 @@ public class Productos {
 
 	public void setPrecio(int precio) {
 		this.precio = precio;
-	}
-
-
-	public int getId_categoria() {
-		return idcategoria;
-	}
-
-
-	public void setId_categoria(int id_categoria) {
-		this.idcategoria = id_categoria;
 	}
 
 
