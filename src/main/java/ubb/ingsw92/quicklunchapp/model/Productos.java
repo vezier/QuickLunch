@@ -3,37 +3,41 @@ package ubb.ingsw92.quicklunchapp.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
-@Table(name = "productos")
+@Table(name = "producto")
 public class Productos {
 	@Id
 	@Column (name="id_producto")
 	private int idProductos;
 	private String nombre;
 	private int precio;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn (name="id_categoria", referencedColumnName ="id_categoria")
-	private Categoria categoria;
+	@Column (name="id_categoria")
+	private int idcategoria;
 	private String descripcion;
 	@Column (name="stock_minimo")
 	private int stockminimo;
 	@Column (name="stock_maximo")
 	private int stockmaximo;
-	private boolean estado;
+	private byte estado;
 		
 	
+	public Productos() {
+
+	}
+
+
 	public Productos(int id_productos, String nombre, int precio, int id_categoria, String descripcion,
-			int stock_minimo, int stock_maximo, boolean estado) {
-		super();
+			int stock_minimo, int stock_maximo, byte estado) {
 		this.idProductos = id_productos;
 		this.nombre = nombre;
 		this.precio = precio;
-		this.categoria = new Categoria(id_categoria, "");
+		this.idcategoria = id_categoria;
 		this.descripcion = descripcion;
 		this.stockminimo = stock_minimo;
 		this.stockmaximo = stock_maximo;
@@ -41,27 +45,13 @@ public class Productos {
 	}
 
 
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
-
-	public Productos() {
-	}
-
-
-	public int getId_productos() {
+	public int getIdProductos() {
 		return idProductos;
 	}
 
 
-	public void setId_productos(int id_productos) {
-		this.idProductos = id_productos;
+	public void setIdProductos(int idProductos) {
+		this.idProductos = idProductos;
 	}
 
 
@@ -85,6 +75,16 @@ public class Productos {
 	}
 
 
+	public int getCategoria() {
+		return idcategoria;
+	}
+
+
+	public void setCategoria(int categoria) {
+		this.idcategoria = categoria;
+	}
+
+
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -95,36 +95,34 @@ public class Productos {
 	}
 
 
-	public int getStock_minimo() {
+	public int getStockminimo() {
 		return stockminimo;
 	}
 
 
-	public void setStock_minimo(int stock_minimo) {
-		this.stockminimo = stock_minimo;
+	public void setStockminimo(int stockminimo) {
+		this.stockminimo = stockminimo;
 	}
 
 
-	public int getStock_maximo() {
+	public int getStockmaximo() {
 		return stockmaximo;
 	}
 
 
-	public void setStock_maximo(int stock_maximo) {
-		this.stockmaximo = stock_maximo;
+	public void setStockmaximo(int stockmaximo) {
+		this.stockmaximo = stockmaximo;
 	}
 
 
-	public boolean isEstado() {
+	public byte getEstado() {
 		return estado;
 	}
 
 
-	public void setEstado(boolean estado) {
+	public void setEstado(byte estado) {
 		this.estado = estado;
 	}
 
 	
-	
-
 }
