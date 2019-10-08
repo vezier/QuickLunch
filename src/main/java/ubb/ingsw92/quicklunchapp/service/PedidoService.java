@@ -8,11 +8,14 @@ import org.springframework.stereotype.Service;
 
 import ubb.ingsw92.quicklunchapp.model.Pedido;
 import ubb.ingsw92.quicklunchapp.repository.PedidoRepo;
+import ubb.ingsw92.quicklunchapp.repository.ProductoRepo;
 
 @Service
 public class PedidoService {
 	@Autowired
 	private PedidoRepo pedidoRep;
+	@Autowired
+	private ProductoRepo productoRep;
 	
 	public List<Pedido> getAllPedido(){
 		List<Pedido> pedido = new ArrayList<> ();

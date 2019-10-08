@@ -24,7 +24,7 @@ public class ClienteService {
 	}
 	public List<Cliente> getAllClientePorCat(int id){
 		List<Cliente> cliente = new ArrayList<> ();
-		clienteRep.findByCategoriaCliente(id)
+		clienteRep.findByIdcategoria(id)
 		.forEach(cliente::add);
 		return cliente;
 	}

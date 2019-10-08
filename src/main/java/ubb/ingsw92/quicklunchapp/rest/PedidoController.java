@@ -50,11 +50,11 @@ public class PedidoController {
 		pedidoService.updatePedido(id, ped);
 	}
 
-	//@DeleteMapping(value="/pedido/{id}")
-	//public void deletePedido(@PathVariable int id) {
-	//	pedidoService.deletePedido(id);
-	//}
 	@DeleteMapping(value="/{id}")
+	public void deletePedido(@PathVariable int id) {
+		pedidoService.deletePedido(id);
+	}
+	@DeleteMapping(value="/estado/{id}")
 	public void togglePed(@PathVariable int id) {
 		pedidoService.togglePedido(id);
 	}

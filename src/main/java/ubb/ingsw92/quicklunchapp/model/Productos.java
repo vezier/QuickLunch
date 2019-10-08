@@ -1,5 +1,7 @@
 package ubb.ingsw92.quicklunchapp.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
@@ -25,7 +28,8 @@ public class Productos {
 	@Column (name="stock_maximo")
 	private int stockmaximo;
 	private byte estado;
-		
+	@ManyToMany (mappedBy="productos")
+	private List<Pedido> pedidos;
 	
 	public Productos() {
 

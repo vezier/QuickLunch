@@ -20,7 +20,7 @@ import ubb.ingsw92.quicklunchapp.model.Productos;
 import ubb.ingsw92.quicklunchapp.service.ClienteService;
 
 @RestController
-@RequestMapping("/api/Cliente")
+@RequestMapping("/api/cliente")
 public class ClienteController {
 	@Autowired
 	private ClienteService clienteService;
@@ -40,7 +40,7 @@ public class ClienteController {
 		}
 		return new ResponseEntity<List<Cliente>>(clie, HttpStatus.OK);
 	}
-	@GetMapping("/{id_cliente}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Cliente> getCliente(@PathVariable int id) {
 		Optional<Cliente> clie1 = clienteService.getCliente(id);
 		Cliente clie = clie1.get();
@@ -53,8 +53,12 @@ public class ClienteController {
 	public void addCliente(@RequestBody Cliente prod) {
 		clienteService.addCliente(prod);
 	}
-	@PutMapping(value="/{id_cliente}")
+	@PutMapping(value="/{id}")
 	public void updateCliente(@RequestBody Cliente clie,@PathVariable int id) {
 		clienteService.updateCliente(id, clie);
+	}
+	@DeleteMapping(value="/{id}")
+	public void deleteProducto(@PathVariable int id) {
+		clienteService.deleteCliente(id);
 	}
 }

@@ -9,24 +9,35 @@ import javax.persistence.Table;
 public class Cliente {
 	@Id
 	@Column (name="id_cliente")
-	private int id_cliente;
+	private int idcliente;
 	private String Rut;
 	private String Nombre;
+	@Column (name="monto_compra")
 	private int montoCompra;
-	@Column (name="idcategoriaCliente")	
-	private int idcategoriaCliente;
+	@Column (name="id_catergoria_cliente")	
+	private int idcategoria;
 	public Cliente() {
 		
 	}
 	public Cliente(int id,String rut,String nombre,int montoc,int idcarCli) {
-		super();
-		this.id_cliente=id;
+		this.idcliente=id;
 		this.Rut=rut;
 		this.Nombre=nombre;
 		this.montoCompra=montoc;
-		this.idcategoriaCliente=idcarCli;
+		this.idcategoria=idcarCli;
 	}
-	
+	public int getIdcliente() {
+		return idcliente;
+	}
+	public void setIdcliente(int idcliente) {
+		this.idcliente = idcliente;
+	}
+	public String getRut() {
+		return Rut;
+	}
+	public void setRut(String rut) {
+		Rut = rut;
+	}
 	public String getNombre() {
 		return Nombre;
 	}
@@ -40,24 +51,10 @@ public class Cliente {
 		this.montoCompra = montoCompra;
 	}
 	public int getIdcategoriaCliente() {
-		return idcategoriaCliente;
+		return idcategoria;
 	}
 	public void setIdcategoriaCliente(int idcategoriaCliente) {
-		this.idcategoriaCliente = idcategoriaCliente;
+		this.idcategoria = idcategoriaCliente;
 	}
-	public int getId_cliente() {
-		return this.id_cliente;
-	}
-	public void setID_cliente(int id) {
-		this.id_cliente = id;
-	}
-	public String getRut() {
-		return Rut;
-	}
-	public void setRut(String rut) {
-		Rut = rut;
-	}
-	
-	
 	
 }

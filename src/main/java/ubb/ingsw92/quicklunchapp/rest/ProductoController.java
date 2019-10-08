@@ -59,11 +59,11 @@ public class ProductoController {
 	public void updateProducto(@RequestBody Productos prod,@PathVariable int id) {
 		productoService.updateProducto(id, prod);
 	}
-	//@DeleteMapping(value="/productos/{id}")
-	//public void deleteProducto(@PathVariable int id) {
-	//	productoService.deleteProducto(id);
-	//}
 	@DeleteMapping(value="/{id}")
+	public void deleteProducto(@PathVariable int id) {
+		productoService.deleteProducto(id);
+	}
+	@PostMapping(value="/{id}")
 	public void toggleProd(@PathVariable int id) {
 		productoService.toggleProducto(id);
 	}
