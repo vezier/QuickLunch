@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,15 +20,14 @@ import ubb.ingsw92.quicklunchapp.model.Boleta;
 import ubb.ingsw92.quicklunchapp.model.Categoria;
 import ubb.ingsw92.quicklunchapp.model.Productos;
 import ubb.ingsw92.quicklunchapp.service.BoletaService;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("api/Boleta")
+@RequestMapping("api/boleta")
 public class BoletaController {
 	@Autowired
 	BoletaService bolService;
 	
 	@GetMapping("")
-	
 	public List<Boleta> getAllBoleta() {
 		return bolService.getAllBoletas();
 	}
@@ -47,9 +47,6 @@ public class BoletaController {
 	public void deleteBoleta(@PathVariable int id) {
 		bolService.deleteBoleta(id);
 	}
-	/*@PostMapping(value="/{id}")
-	public void toggleBoleta(@PathVariable int id) {
-		bolService.toggleBoleta(id);
-	}*/
+
 	
 }

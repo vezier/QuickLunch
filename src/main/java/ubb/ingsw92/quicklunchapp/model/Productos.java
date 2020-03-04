@@ -23,6 +23,8 @@ public class Productos {
 	@Column (name="id_categoria")
 	private int idcategoria;
 	private String descripcion;
+	@Column (name="stock_actual")
+	private int stockactual;
 	@Column (name="stock_minimo")
 	private int stockminimo;
 	@Column (name="stock_maximo")
@@ -36,17 +38,24 @@ public class Productos {
 	}
 
 
-	public Productos(int id_productos, String nombre, int precio, int id_categoria, String descripcion,
-			int stock_minimo, int stock_maximo, byte estado) {
-		this.idProductos = id_productos;
+
+
+
+	public Productos(int idProductos, String nombre, int precio, int idcategoria, String descripcion, int stockactual,
+			int stockminimo, int stockmaximo, byte estado) {
+		this.idProductos = idProductos;
 		this.nombre = nombre;
 		this.precio = precio;
-		this.idcategoria = id_categoria;
+		this.idcategoria = idcategoria;
 		this.descripcion = descripcion;
-		this.stockminimo = stock_minimo;
-		this.stockmaximo = stock_maximo;
+		this.stockactual = stockactual;
+		this.stockminimo = stockminimo;
+		this.stockmaximo = stockmaximo;
 		this.estado = estado;
 	}
+
+
+
 
 
 	public int getIdProductos() {
@@ -81,6 +90,16 @@ public class Productos {
 
 	public int getCategoria() {
 		return idcategoria;
+	}
+
+
+	public int getStockactual() {
+		return stockactual;
+	}
+
+
+	public void setStockactual(int stockactual) {
+		this.stockactual = stockactual;
 	}
 
 

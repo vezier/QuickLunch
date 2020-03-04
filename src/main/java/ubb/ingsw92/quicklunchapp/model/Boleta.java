@@ -15,36 +15,37 @@ import javax.persistence.Table;
 public class Boleta{
 	@Id
 	@Column (name="id_boleta")
-	private int id_boleta;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn (name="id_pedido", referencedColumnName ="id_pedido")
-	private Pedido pedido;
+	private int idboleta;
+	@Column (name="id_pedido")
+	private int idpedido;
 	private Date fecha;
 	private int total_pagar;
     private int forma_pago;
-    private int estado;
     
-    public Boleta(int id_boleta, int id_pedido, Date fecha, int total_pagar, int forma_pago, 
-    		int estado ) {
-    this.id_boleta=id_boleta;
-    //this.pedido=new Pedido();//Completar
+	public Boleta() {
+
+	}
+    public Boleta(int id_boleta, int id_pedido, Date fecha, int total_pagar, int forma_pago) {
+    this.idboleta=id_boleta;
+    this.idpedido=id_pedido;
     this.fecha=fecha;
     this.total_pagar=total_pagar;
     this.forma_pago=forma_pago;
-    this.estado=estado; 
+  
     }
     
     public int getId_boleta() {
-		return id_boleta;
+		return idboleta;
 	}
 	public void setId_boleta(int id_boleta) {
-		this.id_boleta = id_boleta;
+		this.idboleta = id_boleta;
 	}
-	public Pedido getPedido() {
-			return pedido;
+
+	public int getPedido() {
+		return idpedido;
 	}
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
+	public void setPedido(int pedido) {
+		this.idpedido = pedido;
 	}
 	public Date getFecha() {
 		return fecha;
@@ -64,11 +65,6 @@ public class Boleta{
 	public void setForma_pago(int forma_pago) {
 		this.forma_pago = forma_pago;
 	}
-	public int getEstado() {
-		return estado;
-	}
-	public void setEstado(int estado) {
-		this.estado=estado;
-	}
+
   
 }
